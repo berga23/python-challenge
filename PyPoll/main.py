@@ -47,14 +47,41 @@ with open(PypollCSV, 'r') as csvfile:
     elif winner_percentage == otooley_percentage:
         winner = "O'Tooley"
     
+
+    khan_percentage_format = str("{0:.0f}%".format(khan_percentage * 100))
+    correy_percentage_format = str("{0:.0f}%".format(correy_percentage * 100))
+    li_percentage_format = str("{0:.0f}%".format(li_percentage * 100))
+    otooley_percentage_format = str("{0:.0f}%".format(otooley_percentage * 100))
+
     print("-----------------------------------")
     print("Election Results")
     print("-----------------------------------")
     print("Total Votes: " + str(count_votes))
     print("-----------------------------------")
-    print("Khan: " + str("{0:.0f}%".format(khan_percentage * 100)) + " (" + str(khan_votes) + ")")
-    print("Correy: " + str("{0:.0f}%".format(correy_percentage * 100)) + " (" + str(correy_votes) + ")")
-    print("Li: " + str("{0:.0f}%".format(li_percentage * 100)) + " (" + str(li_votes) + ")")
-    print("O'Tooley: " + str("{0:.0f}%".format(otooley_percentage * 100)) + " (" + str(otooley_votes) + ")")
+    print("Khan: " + khan_percentage_format + " (" + str(khan_votes) + ")")
+    print("Correy: " + correy_percentage_format + " (" + str(correy_votes) + ")")
+    print("Li: " + li_percentage_format + " (" + str(li_votes) + ")")
+    print("O'Tooley: " + otooley_percentage_format + " (" + str(otooley_votes) + ")")
     print("-----------------------------------")
     print("Winner: " + str(winner))
+
+    f = open("file.txt", "w")
+
+
+    text = f"""
+    
+
+    -----------------------------------
+    Election Results
+    -----------------------------------
+    Total Votes: ({count_votes})
+    -----------------------------------
+    Khan: {khan_percentage_format} ({str(khan_votes)})
+    Correy: {correy_percentage_format} ({str(correy_votes)})
+    Li: {li_percentage_format} ({str(li_votes)})
+    O'Tooley: {otooley_percentage_format} ({str(otooley_votes)})
+    -----------------------------------
+    Winner: {str(winner)}
+    """
+    f.write(text)
+    f.close
